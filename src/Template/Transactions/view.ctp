@@ -45,6 +45,11 @@
             <th scope="row"><?= __('Modified') ?></th>
             <td><?= h($transaction->modified) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('ImageToText') ?></th>
+            <td><?= $this->Text->autoParagraph(h($result)); ?></td>
+        </tr>
+
     </table>
     <div class="row">
         <h4><?= __('Description') ?></h4>

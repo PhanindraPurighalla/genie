@@ -3,6 +3,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+use TesseractOCR;
+
 /**
  * Transactions Controller
  *
@@ -48,7 +51,17 @@ class TransactionsController extends AppController
 
         $loggedInUser = $this->Auth->user('id');
 
-        $this->set(compact('transaction', 'loggedInUser'));
+        if(!file_exists(__DIR__ . '/../../images/IMG_0492.JPG')){
+            throw new NotFoundException("Warning: the provided file [".__DIR__ . '/../../images/IMG_0492.JPG'."] doesn't exist.");
+        }
+
+        // Create an instanceof tesseract with the filepath as first parameter
+        $tesseractInstance = new TesseractOCR(__DIR__ . '/../../images/IMG_0492.JPG');
+        
+        // Execute tesseract to recognize text
+        $result = $tesseractInstance->run();
+
+        $this->set(compact('transaction', 'loggedInUser', 'result'));
         $this->set('_serialize', ['transaction']);
     }
 
