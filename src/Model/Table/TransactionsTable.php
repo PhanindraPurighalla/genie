@@ -107,6 +107,10 @@ class TransactionsTable extends Table
         $transactions = $this->find()
             ->select(['id', 'title', 'description', 'transaction_date', 'transaction_amount']);
 
+        $transactions
+                ->contain('Users')
+                ->where(['Users.id = ' => $options['loggedInUser']]);
+
         if (empty($options['categories'])) {
             $transactions
                 ->leftJoinWith('Categories')

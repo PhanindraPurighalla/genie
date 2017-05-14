@@ -130,15 +130,19 @@ class TransactionsController extends AppController
         // the passed URL path segments in the request.
         $categories = $this->request->getParam('pass');
 
+        $loggedInUser = $this->Auth->user('id');
+
         // Use the TransactionsTable to find categorized transactions.
-        $transactions = $this->Transactions->find('categorized', [
-            'categories' => $categories
-        ]);
+        $transactions = $this->paginate($this->Transactions->find('categorized', [
+            'categories' => $categories,
+            'loggedInUser' => $loggedInUser
+        ]));
 
         // Pass variables into the view template context.
         $this->set([
             'transactions' => $transactions,
-            'categories' => $categories
+            'categories' => $categories,
+            'loggedInUser' => $loggedInUser
         ]);
     }
 
