@@ -1,0 +1,76 @@
+<?php
+namespace App\Test\TestCase\Controller;
+
+use App\Controller\TransactionsDocumentsController;
+use Cake\TestSuite\IntegrationTestCase;
+
+/**
+ * App\Controller\TransactionsDocumentsController Test Case
+ */
+class TransactionsDocumentsControllerTest extends IntegrationTestCase
+{
+
+    /**
+     * Fixtures
+     *
+     * @var array
+     */
+    public $fixtures = [
+        'app.transactions_documents',
+        'app.transactions',
+        'app.users',
+        'app.categories',
+        'app.transactions_categories',
+        'app.documents'
+    ];
+
+    /**
+     * Test index method
+     *
+     * @return void
+     */
+    public function testIndex()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test view method
+     *
+     * @return void
+     */
+    public function testView()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test add method
+     *
+     * @return void
+     */
+    public function testAdd()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test edit method
+     *
+     * @return void
+     */
+    public function testEdit()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test delete method
+     *
+     * @return void
+     */
+    public function testDelete()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+}
